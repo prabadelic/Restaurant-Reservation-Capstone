@@ -12,7 +12,7 @@ function NewTable() {
   // Handle Form Submission
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(`[newTable] Submitting form - Table Name:{table_name} Capacity:${capacity}`);
+    console.log(`[newTable] Submitting form - Table Name: ${table_name} Capacity: ${capacity}`);
     const abortController = new AbortController();
 
     // Table name validation (allowing '#' as a valid character)
@@ -36,7 +36,7 @@ function NewTable() {
     };
 
     try {
-      console.log("[newTable]A PI request to create table:", newTable);
+      console.log("[newTable]API request to create table:", newTable);
       const response = await createTable(newTable, abortController.signal);
       console.log("[newTable] Table created successfully:", response);
       history.push(`/dashboard`);
