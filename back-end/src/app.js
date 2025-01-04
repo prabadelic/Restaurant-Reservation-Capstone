@@ -15,8 +15,15 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use("/reservations", reservationsRouter);
-app.use("/tables", tablesRouter);
+app.use("/api/reservations", reservationsRouter);
+app.use("/api/tables", tablesRouter);
+
+
+app.use(express.static(path.join(__dirname, "..", "front-end", "build")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "front-end", "build", "index.html"));
+});
 
 app.use(notFound);
 app.use(errorHandler);
