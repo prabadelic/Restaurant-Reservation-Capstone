@@ -18,6 +18,14 @@ app.use(express.json());
 app.use("/reservations", reservationsRouter);
 app.use("/tables", tablesRouter);
 
+// Serve static files from the frontend build folder
+app.use(express.static(path.join(__dirname, "..", "front-end", "build")));
+
+// Handle React frontend routing for all other routes
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "front-end", "build", "index.html"));
+});
+
 app.use(notFound);
 app.use(errorHandler);
 
