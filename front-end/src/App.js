@@ -9,11 +9,8 @@ import Layout from "./layout/Layout";
 function App() {
   return (
     <Switch>
-      <Route path="/" exact>
+      <Route path="/">
         <Layout />
-      </Route>
-      <Route>
-        <NotFound />
       </Route>
     </Switch>
   );
