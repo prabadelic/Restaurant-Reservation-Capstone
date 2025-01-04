@@ -219,16 +219,18 @@ function Dashboard() {
   //format the date for displaying on the top of the page
   function formatDate(dateString) {
     if (!dateString) return "Invalid Date";
-
-    const date = new Date(dateString);
+  
+    const date = new Date(`${dateString}T00:00:00Z`); // Force UTC interpretation
+  
     if (isNaN(date)) return "Invalid Date";
-
+  
     return date.toLocaleDateString("en-US", {
       year: "numeric",
       month: "long",
       day: "numeric",
+      timeZone: "UTC",
     });
-  }
+  }  
 
   return (
     <main className="container-fluid p-3">

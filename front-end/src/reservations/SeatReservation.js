@@ -56,16 +56,19 @@ function SeatReservation() {
    */
   function formatDate(dateString) {
     if (!dateString) return "Invalid Date";
-
-    const date = new Date(dateString);
+  
+    const date = new Date(`${dateString}T00:00:00Z`); // Force UTC interpretation
+  
     if (isNaN(date)) return "Invalid Date";
-
+  
     return date.toLocaleDateString("en-US", {
       year: "numeric",
       month: "long",
       day: "numeric",
+      timeZone: "UTC",
     });
   }
+  
 
   /**
    * Handle Table Selection Change
